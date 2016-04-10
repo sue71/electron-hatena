@@ -1,0 +1,66 @@
+{
+  "name": "react-typescript-example",
+  "version": "1.0.0",
+  "description": "The project using react+typescript+webpack",
+  "main": "./app.js",
+  "scripts": {
+    "clean": "rm -r build",
+    "build": "webpack --config webpack.config.js",
+    "build:dev": "webpack --config webpack.config.js --develop --watch",
+    "start": "NODE_ENV=production electron ./",
+    "start:dev": "NODE_ENV=development HOT=1 electron ./ --debug",
+    "release": "node release.js",
+    "dev-server": "node devServer.js --watch --develop --verbose",
+    "watch": "concurrently --kill-others \"npm run start:dev\" \"npm run dev-server\"",
+    "test": "karma start",
+    "lint": "tslint -c tslint.json "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sue71/react-typescript-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sue71/react-typescript-example/issues"
+  },
+  "homepage": "https://github.com/sue71/react-typescript-example#readme",
+  "dependencies": {
+    "electron-debug": "^0.5.2",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.5.2",
+    "babel-plugin-react-transform": "^2.0.0",
+    "chai": "^3.5.0",
+    "concurrently": "^2.0.0",
+    "css-loader": "^0.23.1",
+    "del": "^2.2.0",
+    "electron-packager": "^6.0.2",
+    "electron-prebuilt": "^0.37.1",
+    "express": "^4.13.4",
+    "file-loader": "^0.8.5",
+    "gulp": "^3.9.1",
+    "karma": "^0.13.21",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-mocha": "^0.2.2",
+    "karma-mocha-reporter": "^1.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.4.5",
+    "react-addons-test-utils": "^0.14.7",
+    "react-transform-hmr": "^1.0.2",
+    "ts-loader": "^0.8.1",
+    "tslint": "^3.5.0",
+    "typescript": "^1.8.2",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.7.1",
+    "webpack-target-electron-renderer": "^0.4.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "target": "es5",
+        "experimentalDecorators": true
+    },
+    "compileOnSave": false,
+    "exclude": [
+        "node_modules",
+        "build"
+    ]
+}

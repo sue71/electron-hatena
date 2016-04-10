@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Electron+ReactJS+Typescript</title>
+  </head>
+  <body>
+    <div id="root">
+    </div>
+    <script>
+      (() => {
+        const script = document.createElement('script');
+        script.src = process.env.HOT ?
+                'http://localhost:3000/build/public/main.js' :
+                '../build/public/main.js'
+        ;
+        document.write(script.outerHTML);
+      })();
+    </script>
+  </body>
+</html>
