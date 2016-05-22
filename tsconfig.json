@@ -11,6 +11,7 @@
     "compileOnSave": false,
     "exclude": [
         "node_modules",
+        "release",
         "build"
     ]
 }
