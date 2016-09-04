@@ -2,17 +2,29 @@
 <html>
   <head>
     <title>Electron+ReactJS+Typescript</title>
+    <style>
+      html {
+        height: 100%;
+        font-size: 10px;
+      }
+    </style>
   </head>
   <body>
     <div id="root">
     </div>
     <script>
       (() => {
-        const script = document.createElement('script');
-        script.src = process.env.HOT ?
-                'http://localhost:3000/build/public/main.js' :
-                '../build/public/main.js'
-        ;
+        const script = document.createElement("script");
+
+        if (window.process) {
+          script.src = process.env.HOT ?
+            "http://localhost:3000/build/public/main.js" :
+            "../build/public/main.js"
+          ;
+        } else {
+          script.src = "http://localhost:3000/build/public/main.js";
+        }
+
         document.write(script.outerHTML);
       })();
     </script>

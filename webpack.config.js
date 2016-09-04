@@ -3,17 +3,18 @@ const webpack = require('webpack');
 
 const DEV = (process.argv.indexOf('--develop') >= 0);
 const VERBOSE = (process.argv.indexOf('--verbose') >= 0);
-const WATCH = (process.argv.indexOf('--watch') >= 0);
+const HOT = (process.argv.indexOf('--hot') >= 0);
 
 console.info("--develop", DEV);
 console.info("--verbose", VERBOSE);
-console.info("--watch", WATCH);
+console.info("--hot", HOT);
 
 const GLOBAL_VARS = {
   __DEV__: DEV,
   'process.env': {
     NODE_ENV: DEV ? '"development"' : '"production"',
-    WATCH: WATCH
+    HOT: HOT,
+    API_URL: '"http://localhost:2000"'
   }
 };
 
@@ -78,8 +79,8 @@ const baseConfig = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        loader: 'style-loader/useable!css-loader?minimize!postcss-loader',
+        test: /(\.css|\.scss)$/,
+        loader: 'style!css?modules&minimize&localIdentName=[path][name]---[local]---[hash:base64:5]!postcss!sass',
       }
     ]
   }
@@ -89,7 +90,7 @@ const appConfig = Object.assign({}, baseConfig, {
 
   // entry point
   entry: [
-    ...(WATCH ? [
+    ...(HOT ? [
       'webpack-hot-middleware/client?reload=true&path=http://localhost:3000/__webpack_hmr'
     ] : []),
     './src/index.tsx'
@@ -108,7 +109,7 @@ const appConfig = Object.assign({}, baseConfig, {
     ...(DEV ? [] : [
       new webpack.optimize.AggressiveMergingPlugin()
     ]),
-    ...(WATCH ? [
+    ...(HOT ? [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin()
     ] : []),
@@ -116,7 +117,7 @@ const appConfig = Object.assign({}, baseConfig, {
 
 });
 
-if (WATCH) {
+if (HOT) {
   appConfig.output.publicPath = 'http://localhost:3000/build/public/';
 }
 

@@ -1,0 +1,19 @@
+{
+  "globalDependencies": {
+    "assertion-error": "registry:dt/assertion-error#1.0.0+20160316155526",
+    "axios": "registry:dt/axios#0.9.1+20160629101425",
+    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "github-electron": "registry:dt/github-electron#1.3.4+20160831020201",
+    "lodash": "registry:dt/lodash#4.14.0+20160830145422",
+    "mocha": "registry:dt/mocha#2.2.5+20160720003353",
+    "node": "registry:dt/node#6.0.0+20160831021119",
+    "react": "registry:dt/react#0.14.0+20160829191040",
+    "react-addons-test-utils": "registry:dt/react-addons-test-utils#0.14.0+20160427035638",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-router": "registry:dt/react-router#2.0.0+20160828232736",
+    "react-router-redux": "registry:dt/react-router-redux#4.0.0+20160724070902",
+    "redux": "registry:dt/redux#3.5.2+20160703092728",
+    "redux-logger": "registry:dt/redux-logger#2.6.0+20160619033847",
+    "redux-thunk": "registry:dt/redux-thunk#2.1.0+20160703120921"
+  }
+}
