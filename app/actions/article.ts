@@ -17,6 +17,8 @@ export class ArticleActionType {
   static REMOVE_ARTICLES_REQUEST = "REMOVE_ARTICLES_REQUEST";
   static REMOVE_ARTICLES_SUCCESS = "REMOVE_ARTICLES_SUCCESS";
   static REMOVE_ARTICLES_FAILED = "REMOVE_ARTICLES_FAILED";
+
+  static FILTER_ARTICLES = "FILTER_ARTICLES";
 }
 
 export function receiveArticles(articles: Article[]) {
@@ -30,6 +32,13 @@ export function selectArticle(article: Article) {
   return {
     type: ArticleActionType.SELECT_ARTICLE,
     article: article
+  };
+}
+
+export function filterArticle(searchText: string) {
+  return {
+    type: ArticleActionType.FILTER_ARTICLES,
+    searchText: searchText
   };
 }
 

@@ -2,7 +2,7 @@
 import "chai";
 import * as ReactDOM from "react-dom";
 import * as TestUtils from "react-addons-test-utils";
-import AppContainer from "./AppContainer";
+import { AppContainer } from "./AppContainer";
 
 const expect = chai.expect;
 
