@@ -1,4 +1,5 @@
 import { create } from "axios";
+import { hashHistory } from "react-router";
 
 const client = create({
   baseURL: process.env.API_URL
@@ -10,6 +11,7 @@ client.interceptors.request.use(function (config) {
   config.headers["Authorization"] = `${token}`;
   return config;
 }, function (error) {
+  debugger;
   console.error(error);
   return Promise.reject(error);
 });
@@ -18,6 +20,10 @@ client.interceptors.request.use(function (config) {
 client.interceptors.response.use(function (response) {
   return response;
 }, function (error) {
+  debugger;
+  if (error.response.status == 401) {
+    hashHistory.replace("/login")
+  }
   console.error(error);
   return Promise.reject(error);
 });

@@ -18,3 +18,18 @@ export function login(user, secret, next) {
   });
 
 }
+
+export function getMe(req, next) {
+  const token = req.headers['authorization'];
+
+  if (!token) {
+    return next(new Error("invalid_token"))
+  }
+
+  jwt.verify(token, req.app.get('secret'), function (err, decoded) {
+    if (err) {
+      return next(new Error("invalid_token"))
+    }
+    next(null, decoded);
+  });
+}

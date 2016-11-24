@@ -1,6 +1,7 @@
-export namespace Endpoints {
+export class Endpoints {
 
-  export const LOGIN = "/login";
-  export const ARTICLES = "/articles";
+  static LOGIN = "/login";
+  static ARTICLES = "/articles";
+  static ME = "/me";
 
 }

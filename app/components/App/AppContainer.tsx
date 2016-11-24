@@ -1,9 +1,12 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import Editor from "../Editor/Editor";
+import { showEditor, dismissEditor } from '../../actions/app';
+import { autoBindClass } from "typed-autobind-decorator";
+import { AppState } from '../../reducers/app';
+import { AuthState } from '../../reducers/auth';
+
 import AppHeader from "./AppHeader";
-import {showDialog} from "../../actions/app";
-import {autoBindClass} from "typed-autobind-decorator";
+import Editor from "../Editor/Editor";
 
 const styles = require("./AppContainer.css");
 
@@ -11,36 +14,32 @@ const styles = require("./AppContainer.css");
 export class AppContainer extends Component<any, any> {
 
   render() {
+    debugger
+    const { auth } = this.props
+    const header = auth.me ? <AppHeader onClickAdd={this.onClickAdd} onClickClose={this.onClickClose} /> : null;
     return (
       <div className={styles.AppContainer}>
-        {this.renderDialog()}
-        <AppHeader
-          onClickAdd={this.onClickAdd}
-        />
+        {header}
         {this.props.children}
       </div>
     );
   }
 
-  renderDialog() {
-    const { app: { dialog } } = this.props;
-
-    switch (dialog) {
-      case "Editor":
-        return <Editor />;
-    }
-  }
-
   onClickAdd() {
     const { dispatch } = this.props;
-    dispatch(showDialog("Editor"));
+    dispatch(showEditor())
+  }
+
+  onClickClose() {
+    const { dispatch } = this.props;
+    dispatch(dismissEditor())
   }
 
 }
 
-
 export default connect((state) => {
   return {
-    app: state.app
+    app: state.app,
+    auth: state.auth
   };
 })(AppContainer);

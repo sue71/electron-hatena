@@ -3,10 +3,12 @@ import {AppActionType} from "../actions/app";
 
 export interface AppState {
   dialog: string;
+  showEditor: Boolean;
 }
 
 const initialState = {
-  dialog: null
+  dialog: null,
+  showEditor: false
 }
 
 export default function articles(state: AppState = initialState, action: any): AppState {
@@ -18,6 +20,16 @@ export default function articles(state: AppState = initialState, action: any): A
     case AppActionType.DISMISS_DIALOG:
       return assign({}, state, {
         dialog: null
+      });
+    case AppActionType.SHOW_EDITOR:
+      return assign({}, state, {
+        dialog: null,
+        showEditor: true
+      });
+    case AppActionType.DISMISS_EDITOR:
+      return assign({}, state, {
+        dialog: null,
+        showEditor: false
       });
     default:
       return state;
